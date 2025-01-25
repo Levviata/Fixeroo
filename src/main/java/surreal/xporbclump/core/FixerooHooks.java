@@ -22,8 +22,12 @@ public class FixerooHooks {
     public static void EntityXPOrb$onUpdate(EntityXPOrb orb) {
         if (orb.xpValue == Integer.MAX_VALUE) return;
         World world = orb.world;
-        double a = FixerooConfig.xpOrbClump.areaSize/2;
-        List<Entity> orbs = world.getEntitiesInAABBexcluding(orb, new AxisAlignedBB(orb.posX-a, orb.posY-a, orb.posZ-a, orb.posX+a, orb.posY+a, orb.posZ+a), e -> e instanceof EntityXPOrb);
+        double a = FixerooConfig.xpOrbClump.areaSize / 2;
+        List<Entity> orbs = world.getEntitiesInAABBexcluding(
+                orb,
+                new AxisAlignedBB(orb.posX - a, orb.posY - a, orb.posZ - a, orb.posX + a, orb.posY + a, orb.posZ + a),
+                e -> e instanceof EntityXPOrb
+        );
         System.out.println(orbs.size());
         if (orbs.size() <= FixerooConfig.xpOrbClump.maxOrbCount) return;
         int count = orbs.size();

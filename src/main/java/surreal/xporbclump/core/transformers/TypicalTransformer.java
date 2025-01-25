@@ -48,8 +48,7 @@ public class TypicalTransformer implements Opcodes {
             cls.accept(writer);
             os.write(writer.toByteArray());
             os.close();
-        }
-        catch (IOException e) {
+        } catch (IOException e) {
             throw new RuntimeException(e);
         }
     }

@@ -13,10 +13,12 @@ public class FixerooTransformer implements IClassTransformer {
         switch (transformedName) {
             // Make XP Orbs get together to reduce FPS.
             // Potentially fixes a bug where game crashes when you get output from a furnace that holds too many experience.
-            case "net.minecraft.entity.item.EntityXPOrb": return XPOrbTransformer.transformEntityXPOrb(transformedName, basicClass);
+            case "net.minecraft.entity.item.EntityXPOrb":
+                return XPOrbTransformer.transformEntityXPOrb(transformedName, basicClass);
 
             // Change XP Orbs' size based on their level.
-            case "net.minecraft.client.renderer.entity.RenderXPOrb": return XPOrbTransformer.transformRenderXPOrb(transformedName, basicClass);
+            case "net.minecraft.client.renderer.entity.RenderXPOrb":
+                return XPOrbTransformer.transformRenderXPOrb(transformedName, basicClass);
         }
         return basicClass;
     }

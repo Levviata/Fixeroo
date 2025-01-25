@@ -19,28 +19,33 @@ public class XPOrbTransformer extends TypicalTransformer {
                     if (node.getOpcode() == INVOKESPECIAL) {
                         node = node.getNext();
                         method.instructions.insertBefore(node, new VarInsnNode(ALOAD, 0));
-                        method.instructions.insertBefore(node, hook("EntityXPOrb$onUpdate", "(Lnet/minecraft/entity/item/EntityXPOrb;)V"));
+                        method.instructions.insertBefore(
+                                node, hook("EntityXPOrb$onUpdate", "(Lnet/minecraft/entity/item/EntityXPOrb;)V"));
                         break;
                     }
                 }
-            }
-            else if (method.name.equals(getName("writeEntityToNBT", "func_70014_b"))) {
+            } else if (method.name.equals(getName("writeEntityToNBT", "func_70014_b"))) {
                 AbstractInsnNode node = method.instructions.getLast();
                 while (node.getOpcode() != INVOKEVIRTUAL) node = node.getPrevious();
                 method.instructions.remove(node.getPrevious());
-                method.instructions.insert(node, new MethodInsnNode(INVOKEVIRTUAL, "net/minecraft/nbt/NBTTagCompound", getName("setInteger", "func_74768_a"), "(Ljava/lang/String;I)V", false));
+                method.instructions.insert(
+                        node, new MethodInsnNode(
+                                INVOKEVIRTUAL, "net/minecraft/nbt/NBTTagCompound",
+                                getName("setInteger", "func_74768_a"), "(Ljava/lang/String;I)V", false
+                        )
+                );
                 method.instructions.remove(node);
-            }
-            else if (method.name.equals(getName("readEntityFromNBT", "func_70037_a"))) {
+            } else if (method.name.equals(getName("readEntityFromNBT", "func_70037_a"))) {
                 AbstractInsnNode node = method.instructions.getLast();
                 while (node.getOpcode() != INVOKEVIRTUAL) node = node.getPrevious();
                 while (node.getOpcode() != ALOAD) {
                     node = node.getPrevious();
                     method.instructions.remove(node.getNext());
                 }
-                method.instructions.insert(node,hook("EntityXPOrb$getXPValue", "(Lnet/minecraft/nbt/NBTTagCompound;)I") );
-            }
-            else if (FixerooConfig.xpOrbClump.removeCooldown && method.name.equals(getName("onCollideWithPlayer", "func_70100_b_"))) {
+                method.instructions.insert(
+                        node, hook("EntityXPOrb$getXPValue", "(Lnet/minecraft/nbt/NBTTagCompound;)I"));
+            } else if (FixerooConfig.xpOrbClump.removeCooldown && method.name.equals(
+                    getName("onCollideWithPlayer", "func_70100_b_"))) {
                 Iterator<AbstractInsnNode> iterator = method.instructions.iterator();
                 while (iterator.hasNext()) {
                     AbstractInsnNode node = iterator.next();
@@ -75,7 +80,10 @@ public class XPOrbTransformer extends TypicalTransformer {
                                 first = false;
                             } else {
                                 method.instructions.insertBefore(node, new VarInsnNode(ALOAD, 1));
-                                method.instructions.insertBefore(node, hook("RenderXPOrb$getSize", "(Lnet/minecraft/entity/item/EntityXPOrb;)F"));
+                                method.instructions.insertBefore(
+                                        node,
+                                        hook("RenderXPOrb$getSize", "(Lnet/minecraft/entity/item/EntityXPOrb;)F")
+                                );
                                 iterator.remove();
                             }
 

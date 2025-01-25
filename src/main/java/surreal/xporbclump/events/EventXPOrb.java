@@ -10,8 +10,8 @@ import org.jetbrains.annotations.NotNull;
 public class EventXPOrb {
     @SubscribeEvent
     public static void remapLegacyClumps(@NotNull RegistryEvent.MissingMappings<EntityEntry> event) {
-        for(RegistryEvent.MissingMappings.Mapping<EntityEntry> mapping : event.getAllMappings()) {
-            if(mapping.key.equals(new ResourceLocation("clumps", "xp_orb_big"))) {
+        for (RegistryEvent.MissingMappings.Mapping<EntityEntry> mapping : event.getAllMappings()) {
+            if (mapping.key.equals(new ResourceLocation("clumps", "xp_orb_big"))) {
                 mapping.remap(GameData.getEntityRegistry().getValue(2));
                 return;
             }
