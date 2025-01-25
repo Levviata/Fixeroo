@@ -1,4 +1,4 @@
-package surreal.fixeroo.events;
+package surreal.xporbclump.events;
 
 import net.minecraft.util.ResourceLocation;
 import net.minecraftforge.event.RegistryEvent;

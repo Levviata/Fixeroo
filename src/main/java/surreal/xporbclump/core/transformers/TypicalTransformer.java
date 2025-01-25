@@ -1,4 +1,4 @@
-package surreal.fixeroo.core.transformers;
+package surreal.xporbclump.core.transformers;
 
 import net.minecraftforge.fml.relauncher.FMLLaunchHandler;
 import org.apache.logging.log4j.Logger;
@@ -9,7 +9,7 @@ import org.objectweb.asm.tree.AbstractInsnNode;
 import org.objectweb.asm.tree.ClassNode;
 import org.objectweb.asm.tree.InsnList;
 import org.objectweb.asm.tree.MethodInsnNode;
-import surreal.fixeroo.core.FixerooPlugin;
+import surreal.xporbclump.core.FixerooPlugin;
 
 import java.io.File;
 import java.io.IOException;
@@ -55,7 +55,7 @@ public class TypicalTransformer implements Opcodes {
     }
 
     protected static MethodInsnNode hook(String name, String desc) {
-        return new MethodInsnNode(INVOKESTATIC, "surreal/fixeroo/core/FixerooHooks", name, desc, false);
+        return new MethodInsnNode(INVOKESTATIC, "surreal/xporbclump/core/FixerooHooks", name, desc, false);
     }
 
     protected static String getName(String mcp, String srg) {

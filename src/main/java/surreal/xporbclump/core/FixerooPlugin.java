@@ -1,4 +1,4 @@
-package surreal.fixeroo.core;
+package surreal.xporbclump.core;
 
 import net.minecraftforge.common.ForgeVersion;
 import net.minecraftforge.fml.relauncher.IFMLLoadingPlugin;
@@ -8,6 +8,7 @@ import org.jetbrains.annotations.Nullable;
 
 import java.util.List;
 import java.util.Map;
+
 
 @IFMLLoadingPlugin.Name("Fixeroo")
 @IFMLLoadingPlugin.MCVersion(ForgeVersion.mcVersion)

@@ -1,7 +1,7 @@
-package surreal.fixeroo.core.transformers;
+package surreal.xporbclump.core.transformers;
 
 import org.objectweb.asm.tree.*;
-import surreal.fixeroo.FixerooConfig;
+import surreal.xporbclump.FixerooConfig;
 
 import java.util.Iterator;
 
